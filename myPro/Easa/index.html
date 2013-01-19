@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="author" content="(TAT)chaN">
+	<meta name="copyright" content="(TAT)chaN">
+	<title>英文解析支援アプリ Easa</title>
+	<script type="text/javascript">
+
+
+
+
+
+
+
+
+	</script>
+	<script src="http://platform.twitter.com/widgets.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body background="bg.gif" style="font-family:Verdana,Arial,sans-serif;">
+<div style="padding:20px">
+	<a href="./"><img src="title.png" style="border:3px double #BBBBBB"></a>
+	<br><br>
+	<h3><font color="#EE5522">Summary</font></h3>
+	<p style="line-height:1.5em">英文解析支援アプリ (English Sentence Analysis Support Application) 通称 Easa (イーサ) は、
+	<br>英文に存在するすべての英単語を抽出し、ユーザーの要求する形で英単語リストを提供するアプリケーションです。</p>
+	<p style="line-height:1.5em">機能追加等で開発改良段階です。最終到達目標は次の二つとなります。</p>
+	<p style="line-height:1.5em">
+		<ul>
+			<li>複数の英字論文からその専攻における頻出英単語の抽出をする</li>
+			<li>英字ウェブページと距離をおく学生の為のマイ英単語学習アプリを提供する</li>
+		</ul>
+	</p>
+	<p style="line-height:1.5em">現在は
+		<b><font color="#5555FF">「英文からすべての英単語を抽出し、指定された設定で英単語リストを表示」
+			</font></b>します。</p>
+	<br>
+	<h3><font color="#EE5522">How to use it</font></h3>
+	<p style="line-height:1.5em">下のテキストボックスに英文を入力 (コピー＆ペースト可) をし、「解析」ボタンをクリックするだけです。</p>
+	<p style="line-height:1.5em">「表示>>最小値」 で 表示する英単語の最低出現回数の設定、
+	<br>「太字>>最小値 , 最大値」 で 指定範囲内の回数出現する英単語の表示を太字にすることができます。
+	<br>また 「ソート」 で 指定された順序に並び替え、結果を表示することができます。
+	<br>文章においてあまり意味を持たない頻出する英単語に関しても、
+	<br>「削除」のチェックボックスにチェックを入れておくことで除去できます。
+	<br>結果ページに表示される (123) などは出現した回数を表します。
+	<br>またHTMLソース解析に対応できています。HTMLのタグの除去にチェックを入れることで
+	<br>除去して処理することができます。また、JavaScriptやStyle Sheet文も除去します。
+	<br>テキストファイルを選択することでファイルも処理できます(Microsoft Office Word等はできません)</p>
+	<br><br><br>
+	<form action="solve.php" method="post" enctype="multipart/form-data">
+		<textarea name="input" rows="25" cols="100"></textarea><br><br>
+		<p>表示 >> 最小値 : <input type="text" name="disp" size="4" value="1" maxlength="4"></p>
+		<p>太字 >> 最小値 : <input type="text" name="min" size="4" value="0" maxlength="4"> 
+		&nbsp;最大値 : <input type="text" name="max" size="4" value="0" maxlength="4"></p>
+		<p>整列 >> <input type="radio" name="srt" value="1" checked>辞書式アルファベット順　
+				<input type="radio" name="srt" value="2">本文出現順序　
+				<input type="radio" name="srt" value="3">出現回数 降順</p>
+		<p>削除 >> <input type="checkbox" name="spwdin" value="1" checked><a href="spwd.txt">一般頻出語</a> の除去　　
+		<input type="checkbox" name="tag" value="1">HTMLタグ の除去 (Style,Script ソースを含む)</p><!-- SMART Stop List + alphaを使用-->
+		<input type="file" name="upfile" size="10">
+		<input type="submit" value="解析" style="padding: 5px 20px; margin: 5px 10px;">
+	</form>
+	<br><br><br>
+	<h3><font color="#EE5522">Specification</font></h3>
+	<p style="line-height:1.5em">
+	<ul>
+		<li>Author : (TAT)chaN</li>
+		<li>AppName : Easa</li>
+		<li>Version : 7.0</li>
+		<li>Last Update : 2012/10/9</li>
+		<li>Language : PHP,HTML,CSS,JavaScript</li> 
+		<li>Contact : <a href="http://lanevok.com">http://lanevok.com</a></li>
+	</ul>
+	</p><br>
+	<h3><font color="#EE5522">Version</font></h3>
+	<p style="line-height:1.5em">
+	<ul>
+		<li>7.0 : テキストファイルの解析を実現。(2012/10/9)</li>
+		<li>6.0 : HTMLタグの除去アルゴリズムを実装。(2012/9/24)</li>
+		<li>5.1 : Twitter Tweet Button の配置。(2012/9/17)</li>
+		<li>5.0 : 実行の効率化。実行時間の表示また多量データに対する処理中止を実装。(2012/9/9)</li>
+		<li>4.0 : 一般頻出語(ストップワード)の除去アルゴリズムを実装。(2012/9/8)</li>
+		<li>3.0 : 三種類のソートアルゴリズムを実装。(2012/9/6)</li>
+		<li>2.0 : ブラウザへの負担軽減、高速アルゴリズムをPHPで実現。ページデザインを一新。(2012/9/3)</li>
+		<li>1.0 : β版で一般公開を開始。主プログラムをJavaScriptで構築。(2012/6)</li>
+	</ul>
+	</p>
+	<br>
+	<p>
+	<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://lanevok.com/easa/" data-via="lanevok" data-lang="ja" data-size="large" data-related="lanevok" data-hashtags="easa">ツイート</a>
+	<script>
+		!function(d,s,id){
+			var js,fjs=d.getElementsByTagName(s)[0];
+			if(!d.getElementById(id)){
+				js=d.createElement(s);
+				js.id=id;js.src="//platform.twitter.com/widgets.js";
+				fjs.parentNode.insertBefore(js,fjs);
+			}
+		}(document,"script","twitter-wjs");
+	</script>
+	</p>
+	<br><br>
+	<p>Copyright &copy; <a href="http://lanevok.com">(TAT)chaN</a> All Rights Reserved.</p>
+</div>
+</body>
+</html>
