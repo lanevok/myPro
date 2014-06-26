@@ -1,19 +1,28 @@
 <?php
 $context = stream_context_create(array(
-  'http' => array('ignore_errors' => true)
-));
-$response = file_get_contents('http://google.com/', false, $context);
+				       'http' => array('ignore_errors' => true)
+				       ));
+$time_start = microtime(TRUE);
+$response = file_get_contents('http://webmax.mind.meiji.ac.jp/', false, $context);
+$time_end = microtime(TRUE);
+$time = $time_end - $time_start;
 $pos = strpos($http_response_header[0], '200');
 if ($pos === false) {
-  echo 'offline';
+  echo 'offline/busy';
   $input = file_get_contents("last.txt");
   if($input==="online"){
     mb_language("Ja") ;
     mb_internal_encoding("EUC-JP") ;
-    $mailto="abc@lanevok.com";
-    $subject="offline";
-    $content="text";
-    $mailfrom="From:" .mb_encode_mimeheader("def@lanevok.com") ."<def@lanevok.com>";
+    $mailto="webmax@lanevok.com";
+    if($time>50){
+      $subject="webmax alert (busy)";
+      $content="webmax server busy. (".$time.")";
+    }
+    else{
+      $subject="webmax alert (offline)";
+      $content="webmax server down. (".$time.")";
+    }
+    $mailfrom="From:" .mb_encode_mimeheader("deamon@lanevok.com") ."<deamon@lanevok.com>";
     mb_send_mail($mailto,$subject,$content,$mailfrom);
     file_put_contents("last.txt","offline");
   }
@@ -24,10 +33,10 @@ else{
   if($input=="offline"){
     mb_language("Ja") ;
     mb_internal_encoding("EUC-JP") ;
-    $mailto="abc@lanevok.com";
-    $subject="online";
-    $content="text";
-    $mailfrom="From:" .mb_encode_mimeheader("def@lanevok.com") ."<def@lanevok.com>";
+    $mailto="webmax@lanevok.com";
+    $subject="webmax alert (online)";
+    $content="webmax server startup.";
+    $mailfrom="From:" .mb_encode_mimeheader("deamon@lanevok.com") ."<deamon@lanevok.com>";
     mb_send_mail($mailto,$subject,$content,$mailfrom);
     file_put_contents("last.txt","online");
   }
