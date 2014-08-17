@@ -5,6 +5,8 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Scanner;
 
+// TLE．p2はメモ化再帰で実装．
+
 /**
  *
 
