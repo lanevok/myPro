@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author (TAT)chaN
  * @since 2014.6.30
- * @date 2014.8.18 (Accepted: 125)
+ * @date 2014.8.18 (Accepted: 76)
  *
  * 【問題概要】
  * まず，チェスをイメージする．チェスの盤面とコマの扱いは同じ．
