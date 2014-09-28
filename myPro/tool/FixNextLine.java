@@ -13,7 +13,7 @@ public class FixNextLine {
 	Scanner s = new Scanner(System.in);
 	StringBuilder b = new StringBuilder();
 	while(s.hasNext())
-	    b.append(s.nextLine().replaceAll("\n", "")+" ");
+	    b.append(s.nextLine().replace("\n", "")+" ");
 	System.out.println(b.toString().replace(". ", ".\n"));
     }
 }
