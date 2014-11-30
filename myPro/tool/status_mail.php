@@ -9,6 +9,14 @@ $time = $time_end - $time_start;
 $pos = strpos($http_response_header[0], '200');
 if ($pos === false) {
   echo 'offline/busy';
+  if($time<5){
+    sleep(10);
+    $response = file_get_contents('http://webmax.mind.meiji.ac.jp/', false, $context);
+    $pos = strpos($http_response_header[0], '200');
+    if($pos !== false){
+      exit();
+    }
+  }
   $input = file_get_contents("last.txt");
   if($input==="online"){
     mb_language("Ja") ;
@@ -20,10 +28,11 @@ if ($pos === false) {
     }
     else{
       $subject="webmax alert (offline)";
-      $content="webmax server down. (".$time.")";
+      $content="webmax server down. (".$time.")".$response.",".$http_response_header[0];
     }
     $mailfrom="From:" .mb_encode_mimeheader("deamon@lanevok.com") ."<deamon@lanevok.com>";
     mb_send_mail($mailto,$subject,$content,$mailfrom);
+
     file_put_contents("last.txt","offline");
   }
 }
