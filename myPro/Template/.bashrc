@@ -15,7 +15,7 @@ umask 022
 
 # alias
 alias ls='ls --color=auto --sort=extension'
-alias la='ls -a --color=auto --sort=extension'
+alias la='ls -la --color=auto --sort=extension'
 alias ll='ls -l --color=auto --sort=extension'
 alias scc='gcc -g O2 -Wall -Wextra -std=c89 -pedantic'
 alias emacs='emacs -nw'
