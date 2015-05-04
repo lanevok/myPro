@@ -134,7 +134,7 @@ void water(void){
     }
     for(i=1;i<5;i++){
       if(tenpai_plus[i]==1){
-	point[i]-=(3000/cnt);
+	point[i]-=(3000/(4-cnt));
       }
     }
   }
