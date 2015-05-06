@@ -160,7 +160,7 @@ void debug(void){
 }
 
 int main(void){
-  int i,win;
+  int i,win,max,c;
 
   for(i=1;i<5;i++){
     point[i] = 25000;
@@ -182,12 +182,26 @@ int main(void){
     else{
       calc(win);
     }
-    printf("\n--------------------\n");
-    for(i=1;i<5;i++){
-      printf("P%d: %5d[%6d]\n",i,point[i],point[i]-25000);
+
+    c=point[1];
+    max=point[1];
+    for(i=2;i<5;i++){
+      c+=point[i];
+      if(max<point[i]){
+	max=point[i];
+      }
     }
-    printf("\n\n");
+
+    printf("\n------------------------------\n");
+    printf("           start    top\n");
+    for(i=1;i<5;i++){
+      printf("P%d: %5d [%6d] [%6d]\n",i,point[i],point[i]-25000,point[i]-max);
+    }
+    printf("\n");
     printf("ribo: %d\n",richi);
-    printf("--------------------\n\n");
+    if(c+richi!=100000){
+      printf("error -> 100000\n");
+    }
+    printf("------------------------------\n\n");
   } 
 }
