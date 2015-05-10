@@ -159,6 +159,55 @@ void debug(void){
   }
 }
 
+void chon(){
+  int chonUser,oya,oyaUser,i,richi_tmp=0;
+  
+  printf("chon user ? (1-4)\n");
+  scanf("%d",&chonUser);
+  printf("chon user is oya ? (yes=1,no=0)\n");
+  scanf("%d",&oya);
+  
+  if(oya==1){
+    /* oya chon */
+    for(i=1;i<5;i++){
+      if(chonUser==i){
+	point[i]-=12000;
+      }
+      else{
+	point[i]+=4000;
+      }
+    }
+  }
+  else{
+    /* ko chon */
+    printf("oya user ? (1-4)\n");
+    scanf("%d",&oyaUser);
+    for(i=1;i<5;i++){
+      if(chonUser==i){
+	point[i]-=8000;
+      }
+      else if(oyaUser==i){
+	point[i]+=4000;
+      }
+      else{
+	point[i]+=2000;
+      }
+    }
+  }
+  while(1){
+    int tmp;
+    /* richi user 0=fin */
+    printf("richi user? (1-4,0=fin)\n");
+    scanf("%d",&tmp);
+    if(tmp==0){
+      break;
+    }
+    point[tmp]-=1000;
+    richi_tmp+=1000;
+  }
+  richi+=richi_tmp;
+}
+
 int main(void){
   int i,win,max,c;
 
@@ -168,7 +217,7 @@ int main(void){
 
   while(1){
     /* water=5, fin=0 */
-    printf("win user (1-4,0=fin,5=water,6=debug)\n");
+    printf("win user (1-4,0=fin,5=water,6=debug,7=chon)\n");
     scanf("%d",&win);
     if(win==5){
       water();
@@ -178,6 +227,9 @@ int main(void){
     }
     else if(win==0){
       return 0;
+    }
+    else if(win==7){
+      chon();
     }
     else{
       calc(win);
