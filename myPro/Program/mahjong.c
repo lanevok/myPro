@@ -245,9 +245,9 @@ int main(void){
     }
 
     printf("\n------------------------------\n");
-    printf("           start    top\n");
+    printf("            start    top\n");
     for(i=1;i<5;i++){
-      printf("P%d: %5d [%6d] [%6d]\n",i,point[i],point[i]-25000,point[i]-max);
+      printf("P%d: %6d [%6d] [%6d]\n",i,point[i],point[i]-25000,point[i]-max);
     }
     printf("\n");
     printf("ribo: %d\n",richi);
