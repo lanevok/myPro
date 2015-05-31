@@ -157,6 +157,7 @@ void debug(void){
   for(i=1;i<5;i++){
     scanf("%d",&point[i]);
   }
+  scanf("%d",&richi);
 }
 
 void chon(){
