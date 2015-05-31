@@ -10,6 +10,8 @@
 HISTSIZE=50000
 HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
 export HISTCONTROL=ignorespace 
+export LANG='ja_JP.UTF-8'
+export LC_ALL='ja_JP.UTF-8'
 
 # Permission 644(022)
 umask 022
@@ -39,5 +41,5 @@ function ping4(){
 alias ping='ping4'
 
 echo ''
-echo 'hello TATchaN bash ! [version: 1.1]'
+echo 'hello TATchaN bash ! [version: 1.2]'
 echo ''
