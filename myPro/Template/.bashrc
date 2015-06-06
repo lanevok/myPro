@@ -12,6 +12,7 @@ HISTTIMEFORMAT='%Y/%m/%d %H:%M:%S '
 export HISTCONTROL=ignorespace 
 export LANG='ja_JP.UTF-8'
 export LC_ALL='ja_JP.UTF-8'
+export PS1="[\u@\h \W]\\$ "
 
 # Permission 644(022)
 umask 022
@@ -40,6 +41,8 @@ function ping4(){
 }
 alias ping='ping4'
 
-echo ''
-echo 'hello TATchaN bash ! [version: 1.2]'
-echo ''
+if [ "$SSH_TTY" != "" ]; then
+    echo ''
+    echo 'hello TATchaN bash ! [version: 1.3]'
+    echo ''
+fi
