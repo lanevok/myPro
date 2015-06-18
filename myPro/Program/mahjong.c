@@ -210,7 +210,8 @@ void chon(){
 }
 
 int main(void){
-  int i,win,max,c;
+  int i,win,max,c,max1,max2;
+  FILE *fp;
 
   for(i=1;i<5;i++){
     point[i] = 25000;
@@ -245,16 +246,38 @@ int main(void){
       }
     }
 
-    printf("\n------------------------------\n");
-    printf("            start    top\n");
+    if(point[1]>point[2]){
+      max1=point[1];
+      max2=point[2];
+    }
+    else{
+      max1=point[2];
+      max2=point[1];
+    }
+    for(i=3;i<5;i++){
+      if(point[i]>=max1){
+	max2=max1;
+	max1=point[i];
+      }
+      else if(point[i]>=max2){
+	max2=point[i];
+      }
+    }
+
+    fp=fopen("log.txt","w");
+    fprintf(fp,"%d %d %d %d %d\n",point[1],point[2],point[3],point[4],richi);
+    fclose(fp);
+
+    printf("\n--------------------------------------\n");
+    printf("            start    top      2nd\n");
     for(i=1;i<5;i++){
-      printf("P%d: %6d [%6d] [%6d]\n",i,point[i],point[i]-25000,point[i]-max);
+      printf("P%d: %6d [%6d] [%6d] [%6d]\n",i,point[i],point[i]-25000,point[i]-max1,point[i]-max2);
     }
     printf("\n");
     printf("ribo: %d\n",richi);
     if(c+richi!=100000){
       printf("error -> 100000\n");
     }
-    printf("------------------------------\n\n");
+    printf("--------------------------------------\n\n");
   } 
 }
