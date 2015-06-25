@@ -35,6 +35,8 @@ alias df='df -h'
 alias diff='colordiff'
 alias a='./a.out'
 alias less='less -iM'
+alias yum='yum -y'
+alias upbrc='wget https://raw.githubusercontent.com/lanevok/myPro/master/myPro/Template/.bashrc -O ~/.bashrc'
 
 function ping4(){
     ping $1 -c 4 
@@ -43,6 +45,6 @@ alias ping='ping4'
 
 if [ "$SSH_TTY" != "" ]; then
     echo ''
-    echo 'hello TATchaN bash ! [version: 1.3]'
+    echo 'hello TATchaN bash ! [version: 1.4]'
     echo ''
 fi
