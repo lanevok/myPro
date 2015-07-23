@@ -210,7 +210,7 @@ void chon(){
 }
 
 int main(void){
-  int i,win,max,c,max1,max2;
+  int i,win,max,c,max1,max2,max3;
   FILE *fp;
 
   for(i=1;i<5;i++){
@@ -254,24 +254,30 @@ int main(void){
       max1=point[2];
       max2=point[1];
     }
+    max3=-1000000;
     for(i=3;i<5;i++){
       if(point[i]>=max1){
+	max3=max2;
 	max2=max1;
 	max1=point[i];
       }
       else if(point[i]>=max2){
+	max3=max2;
 	max2=point[i];
+      }
+      else if(point[i]>=max3){
+	max3=point[i];
       }
     }
 
-    fp=fopen("log.txt","w");
+    fp=fopen("log.txt","a");
     fprintf(fp,"%d %d %d %d %d\n",point[1],point[2],point[3],point[4],richi);
     fclose(fp);
 
     printf("\n--------------------------------------\n");
-    printf("            start    top      2nd\n");
+    printf("             top      2nd      3rd\n");
     for(i=1;i<5;i++){
-      printf("P%d: %6d [%6d] [%6d] [%6d]\n",i,point[i],point[i]-25000,point[i]-max1,point[i]-max2);
+      printf("P%d: %6d [%6d] [%6d] [%6d]\n",i,point[i],point[i]-max1,point[i]-max2,point[i]-max3);
     }
     printf("\n");
     printf("ribo: %d\n",richi);
