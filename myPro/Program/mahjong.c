@@ -1,4 +1,4 @@
-#include<stdio.h>
+#include<stdio.h>  
 
 int my_div(int x, int div){
   double y = x*1.0/div/100;
@@ -11,6 +11,11 @@ int kiriage(double x){
 
 int richi=0;
 int point[5];
+char name[5][10];
+
+void name_pr(void){
+  printf("[%s=1][%s=2][%s=3][%s=4]\n",name[1],name[2],name[3],name[4]);
+}
 
 void calc(int win){
   int i,parent,honba,tumo,score,pay,pay_point;
@@ -24,6 +29,7 @@ void calc(int win){
 
   if(tumo==1){
     printf("parent?(1-4)\n");
+    name_pr();
     scanf("%d",&parent);
     if(parent==win){
       /* oya tumo */
@@ -40,6 +46,7 @@ void calc(int win){
 	int tmp;
 	/* richi user fin=0 */
 	printf("richi user? (1-4,0=fin)\n");
+	name_pr();
 	scanf("%d",&tmp);
 	if(tmp==0){
 	  break;
@@ -72,6 +79,7 @@ void calc(int win){
 	int tmp;
 	/* richi user fin=0 */
 	printf("richi user? (1-4,0=fin)\n");
+	name_pr();
 	scanf("%d",&tmp);
 	if(tmp==0){
 	  break;
@@ -86,6 +94,7 @@ void calc(int win){
   else if(tumo==0){
     /* ron */
     printf("pay user? (1-4)\n");
+    name_pr();
     scanf("%d",&pay);
     point[pay]-=score;
     point[win]+=score;
@@ -95,6 +104,7 @@ void calc(int win){
       int tmp;
       /* richi user fin=0 */
       printf("richi user? (1-4,0=fin)\n");
+      name_pr();
       scanf("%d",&tmp);
       if(tmp==0){
 	break;
@@ -119,6 +129,7 @@ void water(void){
   
   while(1){
     printf("tenpai user? (1-4,0=fin)\n");
+    name_pr();
     scanf("%d",&tenpai[cnt]);
     if(tenpai[cnt]!=0){
       cnt++;
@@ -142,6 +153,7 @@ void water(void){
     int tmp;
     /* richi user 0=fin */
     printf("richi user? (1-4,0=fin)\n");
+    name_pr();
     scanf("%d",&tmp);
     if(tmp==0){
       break;
@@ -150,6 +162,14 @@ void water(void){
     richi_tmp+=1000;
   }
   richi+=richi_tmp;
+}
+
+void reset(void){
+  int i;
+  for(i=1;i<5;i++){
+    point[i]=25000;
+  }
+  richi=0;
 }
 
 void debug(void){
@@ -164,6 +184,7 @@ void chon(){
   int chonUser,oya,oyaUser,i,richi_tmp=0;
   
   printf("chon user ? (1-4)\n");
+  name_pr();
   scanf("%d",&chonUser);
   printf("chon user is oya ? (yes=1,no=0)\n");
   scanf("%d",&oya);
@@ -182,6 +203,7 @@ void chon(){
   else{
     /* ko chon */
     printf("oya user ? (1-4)\n");
+    name_pr();
     scanf("%d",&oyaUser);
     for(i=1;i<5;i++){
       if(chonUser==i){
@@ -195,18 +217,6 @@ void chon(){
       }
     }
   }
-  while(1){
-    int tmp;
-    /* richi user 0=fin */
-    printf("richi user? (1-4,0=fin)\n");
-    scanf("%d",&tmp);
-    if(tmp==0){
-      break;
-    }
-    point[tmp]-=1000;
-    richi_tmp+=1000;
-  }
-  richi+=richi_tmp;
 }
 
 int main(void){
@@ -214,29 +224,11 @@ int main(void){
   FILE *fp;
 
   for(i=1;i<5;i++){
+    scanf("%s",&name[i]);
     point[i] = 25000;
   }
 
   while(1){
-    /* water=5, fin=0 */
-    printf("win user (1-4,0=fin,5=water,6=debug,7=chon)\n");
-    scanf("%d",&win);
-    if(win==5){
-      water();
-    }
-    else if(win==6){
-      debug();
-    }
-    else if(win==0){
-      return 0;
-    }
-    else if(win==7){
-      chon();
-    }
-    else{
-      calc(win);
-    }
-
     c=point[1];
     max=point[1];
     for(i=2;i<5;i++){
@@ -275,15 +267,39 @@ int main(void){
     fclose(fp);
 
     printf("\n--------------------------------------\n");
-    printf("             top      2nd      3rd\n");
+    printf("               top      2nd      3rd\n");
     for(i=1;i<5;i++){
-      printf("P%d: %6d [%6d] [%6d] [%6d]\n",i,point[i],point[i]-max1,point[i]-max2,point[i]-max3);
+      printf("%s : %6d [%6d] [%6d] [%6d]\n",name[i],point[i],point[i]-max1,point[i]-max2,point[i]-max3);
     }
-    printf("\n");
-    printf("ribo: %d\n",richi);
+    /*printf("\n");*/
+    printf("ribo : %d\n",richi);
     if(c+richi!=100000){
       printf("error -> 100000\n");
     }
-    printf("--------------------------------------\n\n");
+    printf("--------------------------------------\n");
+    
+        /* water=5, fin=0 */
+    printf("win user (1-4,0=fin,5=flow,6=debug,7=chon,8=reset)\n");
+    name_pr();
+    scanf("%d",&win);
+    if(win==5){
+      water();
+    }
+    else if(win==6){
+      debug();
+    }
+    else if(win==0){
+      return 0;
+    }
+    else if(win==7){
+      chon();
+    }
+    else if(win==8){
+      reset();
+    }
+    else{
+      calc(win);
+    }
+
   } 
 }
