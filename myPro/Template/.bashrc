@@ -38,6 +38,7 @@ alias less='less -iM'
 alias yum='yum -y'
 alias upbrc='wget https://raw.githubusercontent.com/lanevok/myPro/master/myPro/Template/.bashrc -O ~/.bashrc'
 alias deltree='rm -rf'
+alias ds='du -sh'
 
 function ping4(){
     ping $1 -c 4 
@@ -46,6 +47,6 @@ alias ping='ping4'
 
 if [ "$SSH_TTY" != "" ]; then
     echo ''
-    echo 'hello TATchaN bash ! [version: 1.5]'
+    echo 'hello TATchaN bash ! [version: 1.6]'
     echo ''
 fi
