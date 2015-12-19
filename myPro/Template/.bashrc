@@ -19,8 +19,8 @@ umask 022
 
 # alias
 alias ls='ls --color=auto --sort=extension'
-alias la='ls -la --color=auto --sort=extension'
-alias ll='ls -l --color=auto --sort=extension'
+alias la='ls -lha --color=auto --sort=extension'
+alias ll='ls -lh --color=auto --sort=extension'
 alias scc='gcc -g -O2 -Wall -Wextra -std=c89 -pedantic'
 alias emacs='emacs -nw'
 alias e='emacs -nw'
@@ -37,6 +37,7 @@ alias a='./a.out'
 alias less='less -iM'
 alias yum='yum -y'
 alias upbrc='wget https://raw.githubusercontent.com/lanevok/myPro/master/myPro/Template/.bashrc -O ~/.bashrc'
+alias deltree='rm -rf'
 
 function ping4(){
     ping $1 -c 4 
@@ -45,6 +46,6 @@ alias ping='ping4'
 
 if [ "$SSH_TTY" != "" ]; then
     echo ''
-    echo 'hello TATchaN bash ! [version: 1.4]'
+    echo 'hello TATchaN bash ! [version: 1.5]'
     echo ''
 fi
