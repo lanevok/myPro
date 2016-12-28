@@ -40,13 +40,18 @@ alias upbrc='wget https://raw.githubusercontent.com/lanevok/myPro/master/myPro/T
 alias deltree='rm -rf'
 alias ds='du -sh'
 
+function ping_unlimited(){
+    ping $1 | while read pi; do echo "$(date '+[%Y/%m/%d %H:%M:%S]') $pi"; done
+}
+alias pingx='ping_unlimited'
+
 function ping4(){
-    ping $1 -c 4 
+    ping $1 -c 4
 }
 alias ping='ping4'
 
 if [ "$SSH_TTY" != "" ]; then
     echo ''
-    echo 'hello TATchaN bash ! [version: 1.6]'
+    echo 'hello TATchaN bash ! [version: 1.7]'
     echo ''
 fi
