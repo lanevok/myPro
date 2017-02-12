@@ -54,6 +54,6 @@ alias ping='ping4'
 
 if [ "$SSH_TTY" != "" ]; then
     echo ''
-    echo 'hello TATchaN bash ! [version: 1.7]'
+    echo 'hello TATchaN bash ! [version: 1.8]'
     echo ''
 fi
