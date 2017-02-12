@@ -39,6 +39,8 @@ alias yum='yum -y'
 alias upbrc='wget https://raw.githubusercontent.com/lanevok/myPro/master/myPro/Template/.bashrc -O ~/.bashrc'
 alias deltree='rm -rf'
 alias ds='du -sh'
+alias untargz='tar zxvf'
+alias ungz='gunzip'
 
 function ping_unlimited(){
     ping $1 | while read pi; do echo "$(date '+[%Y/%m/%d %H:%M:%S]') $pi"; done
