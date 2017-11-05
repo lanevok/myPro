@@ -41,6 +41,7 @@ alias deltree='rm -rf'
 alias ds='du -sh'
 alias untargz='tar zxvf'
 alias ungz='gunzip'
+alias speed="curl -s -o /dev/null https://lanevok.com/dummy/10mb -w '%{speed_download}\n' | awk '{ r=\$1*8/1000/1000 ; print r }'"
 
 function ping_unlimited(){
     ping $1 | while read pi; do echo "$(date '+[%Y/%m/%d %H:%M:%S]') $pi"; done
@@ -54,6 +55,6 @@ alias ping='ping4'
 
 if [ "$SSH_TTY" != "" ]; then
     echo ''
-    echo 'hello TATchaN bash ! [version: 1.8]'
+    echo 'hello TATchaN bash ! [version: 1.9]'
     echo ''
 fi
